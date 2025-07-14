@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-
+// Faking slicer upload system to believe that we're a true 3d-printer with OctoPrint (Moonraker) but we're not to allow for upload of files
 Route::get('/version', function () {
     return response()->json([
         "server" => "1.5.0",
