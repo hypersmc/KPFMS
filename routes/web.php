@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
 Route::get('/', function () {
-    return view('home');
+    return redirect()->route('home');
 });
 Auth::routes();
 
