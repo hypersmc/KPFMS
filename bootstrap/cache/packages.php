@@ -1,4 +1,15 @@
 <?php return array (
+  'creativeorange/gravatar' => 
+  array (
+    'aliases' => 
+    array (
+      'Gravatar' => 'Creativeorange\\Gravatar\\Facades\\Gravatar',
+    ),
+    'providers' => 
+    array (
+      0 => 'Creativeorange\\Gravatar\\GravatarServiceProvider',
+    ),
+  ),
   'laravel/pail' => 
   array (
     'providers' => 

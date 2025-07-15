@@ -59,14 +59,14 @@
                 @csrf
                 <div class="input-group mb-1">
                     <div class="form-floating">
-                        <input id="email" type="email" class="form-control" value="" placeholder="" />
+                        <input id="email" name="email" type="email" class="form-control" value="{{ old('email') }}" required />
                         <label for="email">Email</label>
                     </div>
                     <div class="input-group-text"><span class="bi bi-envelope"></span></div>
                 </div>
                 <div class="input-group mb-1">
                     <div class="form-floating">
-                        <input id="password" type="password" class="form-control" placeholder="" />
+                        <input id="password" name="password" type="password" class="form-control" required />
                         <label for="password">Password</label>
                     </div>
                     <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>

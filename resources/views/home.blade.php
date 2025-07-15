@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('pagename', 'Home')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You might be logged in!') }}
+                    {{ __('You have been logged in!') }}
                 </div>
             </div>
         </div>

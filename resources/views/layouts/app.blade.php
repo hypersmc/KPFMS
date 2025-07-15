@@ -1,18 +1,21 @@
-<!doctype html>
+@php use Creativeorange\Gravatar\Facades\Gravatar; @endphp
+    <!doctype html>
 <html lang="en">
 <!--begin::Head-->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{{ config('app.name') }} - Printer Farm</title>
     <!--begin::Accessibility Meta Tags-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#007bff" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
-    <meta name="supported-color-schemes" content="light dark" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <meta name="color-scheme" content="light dark"/>
+    <meta name="theme-color" content="#007bff" media="(prefers-color-scheme: light)"/>
+    <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)"/>
+    <meta name="supported-color-schemes" content="light dark"/>
     @vite(["resources/css/adminlte.css"])
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
@@ -88,41 +91,34 @@
                 <li class="nav-item dropdown user-menu">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                         <img
-                            src="./assets/img/user2-160x160.jpg"
+                            src="{{{Gravatar::get(Auth::user()->email) }}}"
                             class="user-image rounded-circle shadow"
                             alt="User Image"
                         />
-                        <span class="d-none d-md-inline">Alexander Pierce</span>
+                        <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                         <!--begin::User Image-->
                         <li class="user-header text-bg-primary">
                             <img
-                                src="./assets/img/user2-160x160.jpg"
+                                src="{{{Gravatar::get(Auth::user()->email) }}}"
                                 class="rounded-circle shadow"
                                 alt="User Image"
                             />
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2023</small>
+                                {{Auth::user()->name}}
+                                <small>Member since {{Auth::user()->created_at}}</small>
                             </p>
                         </li>
                         <!--end::User Image-->
-                        <!--begin::Menu Body-->
-                        <li class="user-body">
-                            <!--begin::Row-->
-                            <div class="row">
-                                <div class="col-4 text-center"><a href="#">Followers</a></div>
-                                <div class="col-4 text-center"><a href="#">Sales</a></div>
-                                <div class="col-4 text-center"><a href="#">Friends</a></div>
-                            </div>
-                            <!--end::Row-->
-                        </li>
                         <!--end::Menu Body-->
                         <!--begin::Menu Footer-->
                         <li class="user-footer">
                             <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            <a href="#" class="btn btn-default btn-flat float-end">Sign out</a>
+                            <form class="btn btn-default btn-flat float-end" method="post" action="{{route('logout')}}">
+                                @csrf
+                                <a onclick="this.parentNode.submit()">Sign out</a>
+                            </form>
                         </li>
                         <!--end::Menu Footer-->
                     </ul>
@@ -252,7 +248,8 @@
     <!--begin::Footer-->
     <footer class="app-footer">
         <!--begin::To the end-->
-        <div class="float-end d-none d-sm-inline">Anything you want</div>
+        <div class="float-end d-none d-sm-inline">            <strong><i class="fa fa-fw fa-clock-o"></i></strong> {{ round(microtime(true) - LARAVEL_START, 3) }}s
+        </div>
         <!--end::To the end-->
         <!--begin::Copyright-->
         <strong>

@@ -61,22 +61,29 @@
                 @csrf
                 <div class="input-group mb-1">
                     <div class="form-floating">
-                        <input id="name" type="text" class="form-control" placeholder="" />
+                        <input id="name" name="name" type="text" class="form-control" placeholder="" required />
                         <label for="name">Name</label>
                     </div>
                     <div class="input-group-text"><span class="bi bi-person"></span></div>
                 </div>
                 <div class="input-group mb-1">
                     <div class="form-floating">
-                        <input id="email" type="email" class="form-control" placeholder="" />
+                        <input id="email" name="email" type="email" class="form-control" placeholder="" required />
                         <label for="email">Email</label>
                     </div>
                     <div class="input-group-text"><span class="bi bi-envelope"></span></div>
                 </div>
                 <div class="input-group mb-1">
                     <div class="form-floating">
-                        <input id="password" type="password" class="form-control" placeholder="" />
+                        <input id="password" name="password" type="password" class="form-control" placeholder="" required />
                         <label for="password">Password</label>
+                    </div>
+                    <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
+                </div>
+                <div class="input-group mb-1">
+                    <div class="form-floating">
+                        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control" placeholder="" required />
+                        <label for="password_confirmation">Confirm Password</label>
                     </div>
                     <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
                 </div>
