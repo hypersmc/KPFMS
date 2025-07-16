@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PrinterController;
+use App\Http\Controllers\PrintersController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -18,7 +20,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
-    Route::resource('printers', PrinterController::class);
+    Route::resource('printers', PrintersController::class);
+    Route::resource('files', FileController::class);
+    Route::post('/files/send/{filename}', [FileController::class, 'send'])->name('files.send');
+    Route::get('/printer/{printer}', [PrinterController::class, 'show'])->name('printer.show');
+
 });
 
 Route::get('/server/info', function () {
