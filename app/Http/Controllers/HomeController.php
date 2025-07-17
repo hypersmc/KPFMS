@@ -46,8 +46,7 @@ class HomeController extends Controller
                 if (isset($printStats['result']['status']['print_stats'])) {
                     $state = $printStats['result']['status']['print_stats']['state'] ?? 'unknown';
                 }
-                $printer->current_file = !empty($status['filename']) ? basename($status['filename']) : null;
-
+                $printer->current_file = !empty($printStats['result']['status']['print_stats']['filename']) ? basename($printStats['result']['status']['print_stats']['filename']) : null;
                 $print_duration = $printStats['result']['status']['print_stats']['print_duration'] ?? 0;
                 $total_duration = $printStats['result']['status']['print_stats']['total_duration'] ?? 0;
 

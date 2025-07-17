@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('files', FileController::class);
     Route::post('/files/send/{filename}', [FileController::class, 'send'])->name('files.send');
     Route::get('/printer/{printer}', [PrinterController::class, 'show'])->name('printer.show');
+    Route::get('/printer/{printer}/temperatures', [PrinterController::class, 'temperatures'])->name('printer.temperatures');
+    Route::get('/printer/{printer}/temperature-data', [PrinterController::class, 'temperatureData'])->name('printer.temperature-data');
 
 });
 
